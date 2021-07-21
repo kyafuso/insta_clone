@@ -61,3 +61,4 @@ gem 'slim-rails'
 gem 'html2slim'
 
 gem 'rails-i18n'
+gem 'sorcery'
