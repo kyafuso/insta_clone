@@ -55,6 +55,8 @@ group :development do
 
   gem 'rubocop', '0.74.0', require: false
   gem 'rubocop-rails', '2.3.2'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :test do
