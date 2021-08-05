@@ -10,6 +10,26 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
+ *アスタリスクの後の=を削除済み
+ * require_tree .
+ * require_self
  */
+@import 'bootstrap-material-design/dist/css/bootstrap-material-design';
+
+body {
+    position: relative;
+    height: 100vh;
+}
+
+.login-register-form {
+    position: relative;
+    height: 100vh;
+
+.login-register-form-inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+}
+}
