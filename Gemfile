@@ -29,6 +29,18 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'jquery-rails'
+gem 'popper_js'
+gem 'sorcery'
+gem 'redis-rails'
+gem 'slim-rails'
+gem 'html2slim'
+gem 'redis-rails'
+gem 'rails-i18n'
+gem 'annotate'
+
+gem 'font-awesome-sass', '~> 5.4.1'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
@@ -44,6 +56,13 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
+  gem 'rubocop', '0.74.0', require: false
+  gem 'rubocop-rails', '2.3.2'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'pry-byebug'
+  gem 'pry-rails'
 end
 
 group :test do
