@@ -38,8 +38,9 @@ gem 'html2slim'
 gem 'redis-rails'
 gem 'rails-i18n'
 gem 'annotate'
-gem 'font-awesome-sass', '~> 5.4.1'
 gem 'carrierwave'
+gem 'font-awesome-sass', '~> 5.4.1'
+gem 'kaminari'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
