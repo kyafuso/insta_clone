@@ -15,6 +15,7 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-white
             = render 'shared/unread_badge'
           #header-activities.dropdown-menu.dropdown-menu-right.m-0.p-0 aria-labelledby="dropdownMenuButton"
             = render 'shared/header_activities'
+
       li.nav-item
         = link_to user_path(current_user), class: 'nav-link' do
           = icon 'far', 'user', class: 'fa-lg'
