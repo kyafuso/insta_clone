@@ -41,6 +41,7 @@ gem 'annotate'
 gem 'carrierwave'
 gem 'font-awesome-sass', '~> 5.4.1'
 gem 'kaminari'
+gem 'config'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
@@ -65,6 +66,7 @@ group :development do
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'faker'
+  gem 'letter_opener_web'
 end
 
 group :test do
