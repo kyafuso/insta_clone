@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_22_100619) do
+ActiveRecord::Schema.define(version: 2021_11_11_102957) do
 
   create_table "activities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "subject_type"
@@ -71,6 +71,9 @@ ActiveRecord::Schema.define(version: 2021_10_22_100619) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "avatar"
+    t.boolean "notification_on_comment", default: true
+    t.boolean "notification_on_like", default: true
+    t.boolean "notification_on_follow", default: true
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
