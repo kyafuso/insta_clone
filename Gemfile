@@ -70,6 +70,8 @@ group :development do
   gem 'pry-rails'
   gem 'faker'
   gem 'letter_opener_web'
+  gem 'factory_bot_rails'
+  gem 'rspec-rails'
 end
 
 group :test do
