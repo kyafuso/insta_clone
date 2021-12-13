@@ -4,7 +4,7 @@ RSpec.describe 'ユーザー登録', type: :system do
 
   describe 'ユーザー登録' do
     context '入力情報が正しい場合' do
-      it 'ログインできること' do
+      it 'ユーザー登録ができること' do
         visit new_user_path
         fill_in 'ユーザー名', with: 'Rails太郎'
         fill_in 'メールアドレス', with: 'rails@example.com'
@@ -17,7 +17,7 @@ RSpec.describe 'ユーザー登録', type: :system do
     end
 
     context '入力情報に誤りがある場合' do
-      it 'ログインできないこと' do
+      it 'ユーザー登録に失敗すること' do
         visit new_user_path
         fill_in 'ユーザー名', with: ''
         fill_in 'メールアドレス', with: ''
