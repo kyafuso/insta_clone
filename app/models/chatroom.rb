@@ -7,4 +7,6 @@
 #  updated_at :datetime         not null
 #
 class Chatroom < ApplicationRecord
+  has_many :join_chatrooms, dependent: :destroy
+  has_many :users, through: :join_chatrooms
 end

@@ -24,6 +24,8 @@ Rails.application.routes.draw do
     patch :read, on: :member
   end
 
+  resources :chatrooms, only: %i[create show]
+
   namespace :mypage do
     resource :account, only: %i[edit update]
     resources :activities, only: %i[index]
