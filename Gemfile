@@ -44,6 +44,7 @@ gem 'kaminari'
 gem 'config'
 gem 'sidekiq'
 gem 'sinatra'
+gem 'draper'
 gem 'meta-tags'
 
 # Reduces boot times through caching; required in config/boot.rb

@@ -44,6 +44,7 @@ class User < ApplicationRecord
   has_many :activities, dependent: :destroy
   has_many :join_chatrooms, dependent: :destroy
   has_many :chatrooms, through: :join_chatrooms
+  has_many :messages, dependent: :destroy
 
   scope :recent, ->(count) { order(created_at: :desc).limit(count) }
 
@@ -77,13 +78,6 @@ class User < ApplicationRecord
 
   def feed
     Post.where(user_id: following_ids << id)
-  end
-
-  def start_chat_with!(user)
-    chatroom = Chatroom.new
-    chatroom.users = [self, user]
-    chatroom.save!
-    chatroom
   end
 
 end
