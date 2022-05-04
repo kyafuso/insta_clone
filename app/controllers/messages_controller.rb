@@ -25,6 +25,7 @@ class MessagesController < ApplicationController
   end
 
   private
+
   def message_params
     params.require(:message).permit(:body).merge(chatroom_id: params[:chatroom_id])
   end
