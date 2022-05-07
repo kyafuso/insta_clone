@@ -13,8 +13,8 @@ class Chatroom < ApplicationRecord
   has_many :users, through: :chatroom_users
   has_many :messages, dependent: :destroy
 
-  scope :public_channels, ->{ where(direct_message: false) }
-  scope :direct_messages, ->{ where(direct_message: true) }
+  scope :public_channels, -> { where(direct_message: false) }
+  scope :direct_messages, -> { where(direct_message: true) }
 
   def self.chatroom_for_users(users, direct_message: false)
     user_ids = users.map(&:id).sort
