@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_05_080107) do
+ActiveRecord::Schema.define(version: 2022_05_10_095957) do
 
   create_table "activities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "subject_type"
@@ -27,8 +27,6 @@ ActiveRecord::Schema.define(version: 2022_05_05_080107) do
   create_table "chatroom_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "chatroom_id"
-    t.datetime "last_read_at"
-    t.datetime "datetime"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["chatroom_id"], name: "index_chatroom_users_on_chatroom_id"
@@ -40,7 +38,6 @@ ActiveRecord::Schema.define(version: 2022_05_05_080107) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name", null: false
-    t.boolean "direct_message", default: false, null: false
   end
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
