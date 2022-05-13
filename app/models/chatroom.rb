@@ -22,4 +22,8 @@ class Chatroom < ApplicationRecord
     end
     chatroom
   end
+
+  def users_excluding(user)
+    users.reject { |u| u == user }
+  end
 end
