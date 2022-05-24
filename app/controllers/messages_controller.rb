@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
     if @message.save
       ActionCable.server.broadcast(
         "chatroom_#{@message.chatroom_id}",
-        { type: :create, html: (render_to_string partial: 'message', locals: { message: @message }, layout: false), message: @message.as_json }
+        type: :create, html: (render_to_string partial: 'message', locals: { message: @message }, layout: false), message: @message.as_json
       )
       head :ok
     else
@@ -22,7 +22,7 @@ class MessagesController < ApplicationController
     if @message.update(message_update_params)
       ActionCable.server.broadcast(
         "chatroom_#{@message.chatroom_id}",
-        { type: :update, html: (render_to_string partial: 'message', locals: { message: @message }, layout: false), message: @message.as_json }
+        type: :update, html: (render_to_string partial: 'message', locals: { message: @message }, layout: false), message: @message.as_json
       )
       head :ok
     else
@@ -36,7 +36,7 @@ class MessagesController < ApplicationController
 
     ActionCable.server.broadcast(
       "chatroom_#{@message.chatroom_id}",
-      { type: :delete, html: (render_to_string partial: 'message', locals: { message: @message }, layout: false), message: @message.as_json }
+      type: :delete, html: (render_to_string partial: 'message', locals: { message: @message }, layout: false), message: @message.as_json
     )
     head :ok
   end
