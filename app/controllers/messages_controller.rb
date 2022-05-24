@@ -1,12 +1,16 @@
 class MessagesController < ApplicationController
   before_action :require_login, only: %i[create]
   def create
-    @message = current_user.messages.create(message_params)
-    ActionCable.server.broadcast(
-      "chatroom_#{@message.chatroom_id}",
-      { type: :create, html: (render_to_string partial: 'message', locals: { message: @message }, layout: false), message: @message.as_json }
-    )
-    head :ok
+    @message = current_user.messages.build(message_params)
+    if @message.save
+      ActionCable.server.broadcast(
+        "chatroom_#{@message.chatroom_id}",
+        { type: :create, html: (render_to_string partial: 'message', locals: { message: @message }, layout: false), message: @message.as_json }
+      )
+      head :ok
+    else
+      head :bad_request
+    end
   end
 
   def edit
@@ -15,13 +19,15 @@ class MessagesController < ApplicationController
 
   def update
     @message = current_user.messages.find(params[:id])
-    @message.update(message_update_params)
-
-    ActionCable.server.broadcast(
-      "chatroom_#{@message.chatroom_id}",
-      { type: :update, html: (render_to_string partial: 'message', locals: { message: @message }, layout: false), message: @message.as_json }
-    )
-    head :ok
+    if @message.update(message_update_params)
+      ActionCable.server.broadcast(
+        "chatroom_#{@message.chatroom_id}",
+        { type: :update, html: (render_to_string partial: 'message', locals: { message: @message }, layout: false), message: @message.as_json }
+      )
+      head :ok
+    else
+      head :bad_request
+    end
   end
 
   def destroy
