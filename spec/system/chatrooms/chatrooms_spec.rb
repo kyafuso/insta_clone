@@ -11,7 +11,7 @@ RSpec.describe 'チャット', type: :system do
     # ユーザーの詳細画面に遷移する
     visit user_path(user)
     # メッセージボタンが存在する
-    expect(page).to have_content('メッセージ')
+    expect(page).to have_selector(:link_or_button, 'メッセージ')
   end
 
   it '「メッセージ」ボタンを押すと当該ユーザーとのチャットルームに遷移すること' do
@@ -20,22 +20,8 @@ RSpec.describe 'チャット', type: :system do
     # ユーザーの詳細画面に遷移する
     visit user_path(user)
     # メッセージボタンを押す
-    click_link 'メッセージ'
+    click_on 'メッセージ'
     expect(current_path).to eq chatroom_path(Chatroom.first)
-  end
-
-  it 'テキストを入力しないで投稿ボタンを押すとエラーメッセージが表示されること', js: true do
-    # ログインする
-    login_as login_user
-    # ユーザーの詳細画面に遷移する
-    visit user_path(user)
-    # メッセージボタンを押す
-    click_link 'メッセージ'
-    # 何も入力せず投稿ボタンを押す
-    click_button '投稿'
-    # アラートが表示されるまで待つ必要がある
-    sleep 0.5
-    expect(page.driver.browser.switch_to.alert.text).to eq 'メッセージを入力してください'
   end
 
   it 'テキストを入力して投稿ボタンを押すとメッセージが投稿されること' do
@@ -44,11 +30,11 @@ RSpec.describe 'チャット', type: :system do
     # ユーザーの詳細画面に遷移する
     visit user_path(user)
     # メッセージボタンを押す
-    click_link 'メッセージ'
+    click_on 'メッセージ'
     # メッセージを入力する
     fill_in 'メッセージ', with: 'hello world'
     # 投稿ボタンを押す
-    click_button '投稿'
+    click_on '投稿'
     # メッセージが画面に反映される
     expect(page).to have_content 'hello world'
   end
@@ -59,18 +45,18 @@ RSpec.describe 'チャット', type: :system do
     # ユーザーの詳細画面に遷移する
     visit user_path(user)
     # メッセージボタンを押す
-    click_link 'メッセージ'
+    click_on 'メッセージ'
     # メッセージを入力する
     fill_in 'メッセージ', with: 'hello world'
     # 投稿ボタンを押す
-    click_button '投稿'
+    click_on '投稿'
     # メッセージが画面に反映される
     expect(page).to have_content 'hello world'
     # メッセージの編集ボタンを押す
     find(".edit-button").click
     within '#modal-container' do
       fill_in 'メッセージ', with: 'updated hello world'
-      click_button '更新'
+      click_on '更新'
     end
     expect(page).to have_content('updated hello world')
   end
@@ -81,11 +67,11 @@ RSpec.describe 'チャット', type: :system do
     # ユーザーの詳細画面に遷移する
     visit user_path(user)
     # メッセージボタンを押す
-    click_link 'メッセージ'
+    click_on 'メッセージ'
     # メッセージを入力する
     fill_in 'メッセージ', with: 'hello world'
     # 投稿ボタンを押す
-    click_button '投稿'
+    click_on '投稿'
     # メッセージが画面に反映される
     expect(page).to have_content 'hello world'
     # メッセージの編集ボタンを押す
