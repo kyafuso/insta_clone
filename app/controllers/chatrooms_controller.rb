@@ -3,7 +3,7 @@ class ChatroomsController < ApplicationController
   before_action :require_user_ids, only: %i[create]
 
   def index
-    @chatrooms = current_user.chatrooms.includes(:users, :messages).page(params[:page]).order(created_at: :desc)
+    @chatrooms = current_user.chatrooms.includes(:users, messages: :user).page(params[:page]).order(created_at: :desc)
   end
 
   def create
