@@ -18,7 +18,10 @@ $(function() {
                             // 自分の投稿じゃない場合は編集・削除ボタンを非表示にする
                             $(`#message-${data.message.id}`).find('.crud-area').hide()
                         }
-                        $('.input-message-body').val('');
+                        if($(`#message-${data.message.id}`).data("senderId") == currentUserId) {
+                            // 自分の投稿の場合は入力フィールドをクリアする
+                            $('.input-message-body').val('');
+                        }
                         break;
                     case "update":
                         $(`#message-${data.message.id}`).replaceWith(data.html);
