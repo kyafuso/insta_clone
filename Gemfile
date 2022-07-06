@@ -44,6 +44,7 @@ gem 'kaminari'
 gem 'config'
 gem 'sidekiq'
 gem 'sinatra'
+gem 'draper'
 gem 'meta-tags'
 
 # Reduces boot times through caching; required in config/boot.rb
@@ -77,6 +78,7 @@ end
 group :test do
   gem 'capybara', '>= 2.15'
   gem 'webdrivers'
+  gem 'rspec_junit_formatter'
   #gem 'selenium-webdriver'
   #gem 'chromedriver-helper'
 
